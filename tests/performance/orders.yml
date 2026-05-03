@@ -1,0 +1,32 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 10
+      arrivalRate: 5
+      name: "Aquecimento (Warm up)"
+    - duration: 20
+      arrivalRate: 20
+      name: "Pico de acessos de colecionadores"
+  
+scenarios:
+  - name: "Fluxo de compra de camisa histórica"
+    flow:
+      # Passo 1: Login e captura do token
+      - post:
+          url: "/api/auth/login"
+          json:
+            username: "Zico"
+            password: "1981"
+          capture:
+            - json: "$.token"
+              as: "token"
+      
+      # Passo 2: Criar o pedido usando o token capturado
+      - post:
+          url: "/api/orders"
+          headers:
+            Authorization: "Bearer {{ token }}"
+          json:
+            item: "Camisa Flamengo 1981 - Mundial"
+            amount: 350.00
+            quantity: 1

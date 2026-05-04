@@ -4,6 +4,37 @@ API REST em Node.js para cenários de **QA**: autenticação com JWT, pedidos de
 
 ---
 
+📋 User Stories (Histórias de Usuário)
+Esta seção descreve as funcionalidades do ponto de vista do usuário final e os critérios de aceitação que guiaram a estratégia de testes da API.
+
+1. Autenticação de Colecionador
+Como um colecionador de mantos sagrados,
+eu quero me autenticar no sistema utilizando minhas credenciais,
+para que eu possa acessar minhas informações e realizar pedidos com segurança.
+
+Critério de Aceitação: O sistema deve retornar um token JWT válido para credenciais corretas e impedir o acesso com dados inválidos (Ex: senha incorreta de 1981).
+
+2. Gestão de Pedidos Históricos
+Como um torcedor interessado em camisas retrô,
+eu quero registrar novos pedidos informando o item, valor e quantidade,
+para que eu possa organizar minha coleção pessoal.
+
+Critério de Aceitação: O pedido deve ser armazenado em memória com um ID único e associado ao perfil do usuário autenticado.
+
+3. Consulta de Histórico
+Como um usuário da plataforma,
+eu quero visualizar a lista de todos os meus pedidos realizados,
+para que eu tenha controle sobre os itens que já adquiri.
+
+Critério de Aceitação: A API deve retornar apenas os pedidos pertencentes ao usuário logado, garantindo a privacidade dos dados.
+
+4. Validação de Saúde do Sistema (QA Perspective)
+Como um analista de qualidade (QA),
+eu quero verificar a disponibilidade do serviço através de um endpoint de status,
+para que eu garanta que a infraestrutura está operando antes de iniciar as baterias de testes.
+
+Critério de Aceitação: O endpoint /api/status deve responder com 200 OK sem a necessidade de autenticação.
+
 ## Stack
 
 | Camada | Tecnologia |
